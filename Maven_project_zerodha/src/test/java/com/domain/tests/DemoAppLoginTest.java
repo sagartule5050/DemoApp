@@ -19,7 +19,7 @@ public DemoAppHomePage home;
 	
 	@Test(description = "Test DemoApp Login page" , priority = 1)
 	
-	public  void verifyKiteLoginPage1() {
+	public  void verifyDemoAppLoginPage() {
 		login1 = new DemoAppLoginPage(driver);
 		
 		driver.get("https://sakshingp.github.io/assignment/login.html");
@@ -27,7 +27,7 @@ public DemoAppHomePage home;
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		Reporter.log("==========Application Started==========" , true);  
 		
-		soft.assertEquals(login1.getPageTitle(), "Login Form");
+		soft.assertEquals(login1.getPageTitle(), "Demo App");
 		soft.assertTrue(driver.getPageSource().contains("Login Form"));
 		login1.set1UserId("Sagar");
 		login1.setPassword("tule41");     
@@ -40,17 +40,23 @@ public DemoAppHomePage home;
 	public  void verifyDemoappHomepage (){
 		home = new DemoAppHomePage(driver);
 		
-login1 = new DemoAppLoginPage(driver);
+        login1 = new DemoAppLoginPage(driver);
 		
 		driver.get("https://sakshingp.github.io/assignment/login.html");
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		login1.set1UserId("Sagar");
 		login1.setPassword("tule41");     
 		login1.clickOnLoginButton();
 		
 		home.clickOnAmount();
+		
+		
+		soft.assertFalse(home.verifySortingValue());
+		soft.assertAll();
+		
+		driver.quit();
 		
 	}
 

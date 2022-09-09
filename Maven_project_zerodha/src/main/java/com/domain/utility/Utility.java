@@ -24,7 +24,7 @@ public class Utility {
 	public static void captureScrenshots(WebDriver driver , String testName) throws IOException {
 		
 		File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		File dest = new File("E:\\java program\\Maven_project_zerodha\\Screenshots" + testName +".jpg");
+		File dest = new File("/Maven_project_zerodha/Screenshots/" + testName +".jpg");
 		//FileUtils.copyFile(src, dest);
 		FileHandler.copy(src, dest);
 		 
